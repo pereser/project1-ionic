@@ -1,4 +1,4 @@
-package com.rodrigocod.cursomc.resources;
+package com.rodrigocod.unidonate.resources;
 
 
 
@@ -9,8 +9,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.rodrigocod.cursomc.domain.Categoria;
-import com.rodrigocod.cursomc.services.CategoriaService;
+import com.rodrigocod.unidonate.domain.Categoria;
+import com.rodrigocod.unidonate.services.CategoriaService;
 
 
 @RestController

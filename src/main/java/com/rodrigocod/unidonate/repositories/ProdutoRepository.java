@@ -1,10 +1,10 @@
-package com.rodrigocod.cursomc.repositories;
+package com.rodrigocod.unidonate.repositories;
 
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-import com.rodrigocod.cursomc.domain.Produto;
+import com.rodrigocod.unidonate.domain.Produto;
 
 @Repository
 

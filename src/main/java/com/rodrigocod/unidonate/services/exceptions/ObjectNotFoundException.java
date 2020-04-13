@@ -1,4 +1,4 @@
-package com.rodrigocod.cursomc.services.exceptions;
+package com.rodrigocod.unidonate.services.exceptions;
 
 public class ObjectNotFoundException extends RuntimeException {
 

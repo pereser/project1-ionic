@@ -1,4 +1,4 @@
-package com.rodrigocod.cursomc.resources.exceptions;
+package com.rodrigocod.unidonate.resources.exceptions;
 
 import java.io.Serializable;
 

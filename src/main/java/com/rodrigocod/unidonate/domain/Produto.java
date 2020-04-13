@@ -1,4 +1,4 @@
-package com.rodrigocod.cursomc.domain;
+package com.rodrigocod.unidonate.domain;
 
 import java.io.Serializable;
 import java.util.ArrayList;
