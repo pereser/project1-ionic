@@ -1,10 +1,10 @@
-package com.rodrigocod.cursomc;
+package com.rodrigocod.unidonate;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class CursomcApplicationTests {
+class UnidonateApplicationTests {
 
 	@Test
 	void contextLoads() {

@@ -9,10 +9,15 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 import com.rodrigocod.unidonate.domain.Categoria;
 import com.rodrigocod.unidonate.domain.Cidade;
+import com.rodrigocod.unidonate.domain.Cliente;
+import com.rodrigocod.unidonate.domain.Endereco;
 import com.rodrigocod.unidonate.domain.Estado;
 import com.rodrigocod.unidonate.domain.Produto;
+import com.rodrigocod.unidonate.domain.enums.TipoCliente;
 import com.rodrigocod.unidonate.repositories.CategoriaRepository;
 import com.rodrigocod.unidonate.repositories.CidadeRepository;
+import com.rodrigocod.unidonate.repositories.ClienteRepository;
+import com.rodrigocod.unidonate.repositories.EnderecoRepository;
 import com.rodrigocod.unidonate.repositories.EstadoRepository;
 import com.rodrigocod.unidonate.repositories.ProdutoRepository;
 
@@ -28,6 +33,11 @@ public class UnidonateApplication implements CommandLineRunner {
 	private EstadoRepository estadoRepository;
 	@Autowired
 	private CidadeRepository cidadeRepository;
+	@Autowired
+	private ClienteRepository clienteRepository;
+	@Autowired
+	private EnderecoRepository enderecoRepository;
+	
 	
 	public static void main(String[] args) {
 		SpringApplication.run(UnidonateApplication.class, args);
@@ -66,7 +76,17 @@ public class UnidonateApplication implements CommandLineRunner {
 		estadoRepository.saveAll(Arrays.asList(est1, est2));
 		cidadeRepository.saveAll(Arrays.asList(c1, c2, c3));
 		
+		Cliente cli1 = new Cliente(null, "Maria", "Joanadark@gmail.com", "149382830493", TipoCliente.PESSOAFISICA);
 		
+		cli1.getTelefones().addAll(Arrays.asList("2929392393", "203020302"));
+		
+		Endereco e1 = new Endereco(null, "Rua fires", "200", "Casa", "guararapes", "2923992", cli1, c1);
+		Endereco e2 = new Endereco(null, "Rua fireses", "2003", "Casa", "guararapes", "29233992", cli1, c2);
+		
+		cli1.getEnderecos().addAll(Arrays.asList(e1,e2));
+		
+		clienteRepository.saveAll(Arrays.asList(cli1));
+		enderecoRepository.saveAll(Arrays.asList(e1,e2));
 	}
 
 }
