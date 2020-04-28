@@ -13,6 +13,7 @@ import com.rodrigocod.unidonate.domain.Cidade;
 import com.rodrigocod.unidonate.domain.Cliente;
 import com.rodrigocod.unidonate.domain.Endereco;
 import com.rodrigocod.unidonate.domain.Estado;
+import com.rodrigocod.unidonate.domain.ItemPedido;
 import com.rodrigocod.unidonate.domain.Pagamento;
 import com.rodrigocod.unidonate.domain.PagamentoComBoleto;
 import com.rodrigocod.unidonate.domain.PagamentoComCartao;
@@ -25,6 +26,7 @@ import com.rodrigocod.unidonate.repositories.CidadeRepository;
 import com.rodrigocod.unidonate.repositories.ClienteRepository;
 import com.rodrigocod.unidonate.repositories.EnderecoRepository;
 import com.rodrigocod.unidonate.repositories.EstadoRepository;
+import com.rodrigocod.unidonate.repositories.ItemPedidoRepository;
 import com.rodrigocod.unidonate.repositories.PagamentoRepository;
 import com.rodrigocod.unidonate.repositories.PedidoRepository;
 import com.rodrigocod.unidonate.repositories.ProdutoRepository;
@@ -49,6 +51,9 @@ public class UnidonateApplication implements CommandLineRunner {
 	private PedidoRepository pedidoRepository;
 	@Autowired
 	private PagamentoRepository pagamentoRepository;
+	@Autowired
+	private ItemPedidoRepository itemPedidoRepository;
+	
 	
 	public static void main(String[] args) {
 		SpringApplication.run(UnidonateApplication.class, args);
@@ -113,6 +118,20 @@ public class UnidonateApplication implements CommandLineRunner {
 		
 		pedidoRepository.saveAll(Arrays.asList(ped1, ped2));
 		pagamentoRepository.saveAll(Arrays.asList(pagto1, pagto2));
+		
+		ItemPedido ip1 = new ItemPedido(ped1, p1, 0.00, 1 , 2000.00);
+		ItemPedido ip2 = new ItemPedido(ped1, p3, 0.00, 2 , 80.00);
+		ItemPedido ip3 = new ItemPedido(ped2, p2, 100.00, 1 , 800.00);
+		
+		ped1.getItens().addAll(Arrays.asList(ip1, ip2));
+		ped2.getItens().addAll(Arrays.asList(ip3));
+		
+		p1.getItens().addAll(Arrays.asList(ip1));
+		p2.getItens().addAll(Arrays.asList(ip3));
+		p3.getItens().addAll(Arrays.asList(ip2));
+		
+		itemPedidoRepository.saveAll(Arrays.asList(ip1, ip2, ip3));
+		
 	}
 
 }
